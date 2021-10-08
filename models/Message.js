@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
-const moment = require('moment');
+const Group = require('./Group');
+const User = require('./User');
+const Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
 
-  const messageSchema = mongoose.Schema({
-      messageBody: {type: String, required: true},
-      userId: {type: String, required: true}, 
-      //time: moment().format('h:mm a')
-  });
-  module.exports = mongoose.model('Message', messageSchema);
+const message = new schema({
+  Message_id = ObjectId,
+  Group: Group ,
+  User: User,
+  message_line: { type: String},
+  created_at: { type: Date, default: Date.now },
+});
+
+module.exports = mongoose.model('Message', message);
