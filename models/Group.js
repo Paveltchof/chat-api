@@ -4,11 +4,11 @@ var ObjectId = Schema.Types.ObjectId;
 
 var GroupSchema = new mongoose.Schema({
     Group_Id = ObjectId,
-    name: { type: String, unique: true },
-    topic: {type: String, required:true},
+    name: { type: String, required: true, lowercase:true, unique: true },
     users: [User],
     messages: [Message],
-    created_at: {type:Date, required: true},
+    created_at: {type:Date, default: Date.now},
     updated_at: { type: Date, default: Date.now },
+    created_by: User 
 });
 module.exports = mongoose.model('Group', GroupSchema);
