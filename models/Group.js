@@ -4,7 +4,7 @@ var ObjectId = Schema.Types.ObjectId;
 
 var GroupSchema = new mongoose.Schema({
     Group_Id = ObjectId,
-    name: { type: String, required: true, lowercase:true, unique: true },
+    name: { type: String, required: true, lowercase:true },
     users: [User],
     messages: [Message],
     created_at: {type:Date, default: Date.now},

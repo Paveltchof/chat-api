@@ -6,33 +6,12 @@ const Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 const message = new schema({
- sender : {
-   type: ObjectId, 
-   ref: 'User'
- },
- message : [
-   {
-     message: String,
-     meta: [
-       {
-         user : {
-           type: ObjectId,
-           ref: 'User'
-         },
-         delivered:{ type: Boolean, default:false},
-         read:{type:Boolean, default:false}
-       }
-     ]
-   }
- ],
-  Group:{type:Boolean, default: false} ,
-  Participants : [
-    {
-      user: {type: ObjectId, ref:User},
-      delivered:{type: Boolean, default: false},
-      
-    }
-  ]
+  Message_id = ObjectId,
+  group: Group.ObjectId,
+  user:User.ObjectId,
+  message_line: {type:String, required:true,},
+  read: {type:Boolean, default:true},
+  created_at: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Message', message);
