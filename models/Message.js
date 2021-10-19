@@ -7,11 +7,13 @@ var ObjectId = Schema.Types.ObjectId;
 
 const message = new schema({
   Message_id = ObjectId,
-  group: Group.ObjectId,
-  user:User.ObjectId,
-  message_line: {type:String, required:true,},
-  read: {type:Boolean, default:true},
-  created_at: { type: Date, default: Date.now },
+  Group: [{ type:ObjectId,
+             ref:"Group"}],
+  User:[{ type:ObjectId,
+            ref:"User"}],
+  message_body: {type:String, required:true},
+  sent_at: { type: Date, default: Date.now },
+  read: {type:Boolean, default:false},
 });
 
 module.exports = mongoose.model('Message', message);
